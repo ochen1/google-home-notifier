@@ -57,7 +57,7 @@ var play = function(mp3_url, callback) {
       }
       browser.stop();
     });
-  }else {
+  } else {
     getPlayUrl(mp3_url, deviceAddress, function(res) {
       callback(res);
     });
@@ -65,12 +65,9 @@ var play = function(mp3_url, callback) {
 };
 
 var getSpeechUrl = function(text, host, callback) {
-  googletts(text, language, 1, 1000, googlettsaccent).then(function (url) {
-    onDeviceUp(host, url, function(res){
-      callback(res)
-    });
-  }).catch(function (err) {
-    console.error(err.stack);
+  var url = googletts.getAudioUrl(text, language, 1, 1000, googlettsaccent);
+  onDeviceUp(host, url, function(res){
+    callback(res)
   });
 };
 
