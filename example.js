@@ -1,6 +1,5 @@
 var express = require('express');
 var googlehome = require('./google-home-notifier');
-var ngrok = require('ngrok');
 var bodyParser = require('body-parser');
 var app = express();
 const serverPort = 8091; // default port
@@ -96,13 +95,11 @@ app.get('/google-home-notifier', function (req, res) {
 })
 
 app.listen(serverPort, function () {
-  ngrok.connect(serverPort, function (err, url) {
-    console.log('Endpoints:');
-    console.log('    http://' + ip + ':' + serverPort + '/google-home-notifier');
-    console.log('    ' + url + '/google-home-notifier');
-    console.log('GET example:');
-    console.log('curl -X GET ' + url + '/google-home-notifier?text=Hello+Google+Home');
-	console.log('POST example:');
-	console.log('curl -X POST -d "text=Hello Google Home" ' + url + '/google-home-notifier');
-  });
+  var hostip = '0.0.0.0';
+  console.log('Endpoints:');
+  console.log('    http://' + hostip + ':' + serverPort + '/google-home-notifier');
+  console.log('GET example:');
+  console.log('curl -X GET "http://' + hostip + ':' + serverPort + '/google-home-notifier?text=Hello+Google+Home"');
+  console.log('POST example:');
+  console.log('curl -X POST -d "text=Hello Google Home" "http://' + hostip + ':' + serverPort+ '/google-home-notifier"');
 })

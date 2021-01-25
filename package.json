@@ -18,7 +18,6 @@
     "castv2-client": "^1.1.2",
     "express": "^4.14.0",
     "google-tts-api": "2.0.0",
-    "mdns": "^2.3.3",
-    "ngrok": "^2.2.4"
+    "mdns": "^2.3.3"
   }
 }
