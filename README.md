@@ -6,6 +6,11 @@ Send notifications to Google Home
 $ npm install google-home-notifier
 ```
 
+If you get any errors with mdns.hpp (ENOENT dns_sd.h), you can try installing the following package with `apt`.
+```sh
+$ sudo apt install libavahi-compat-libdnssd-dev -y
+```
+
 #### Usage
 ```javascript
 var googlehome = require('google-home-notifier');
